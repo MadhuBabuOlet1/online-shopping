@@ -1,25 +1,32 @@
 package com.onlineshopping.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.onlineshopping.dao.CategoryDAO;
+
 @Controller
 public class Pagecontroller {
 
-	@RequestMapping(value = { "/", "/home", "/index" })
-	public String index(Model model ) {
+	@Autowired
+	private CategoryDAO categoryDAO;
 
-		
+	@RequestMapping(value = { "/", "/home", "/index" })
+	public String index(Model model) {
+
 		model.addAttribute("title", "Home");
+
+		model.addAttribute("categories", categoryDAO.listOfCategories());
+
 		model.addAttribute("userClickHome", true);
 		return "page";
 
 	}
-	
 
-	@RequestMapping(value ="/about")
+	@RequestMapping(value = "/about")
 	public ModelAndView about() {
 
 		ModelAndView mv = new ModelAndView("page");
@@ -28,7 +35,6 @@ public class Pagecontroller {
 		return mv;
 
 	}
-	
 
 	@RequestMapping(value = "/contact")
 	public ModelAndView contact() {
