@@ -31,9 +31,9 @@
 
 </head>
 <body>
-<%-- 	<c:forEach items="categories" var="category"> --%>
-<%-- 		${category.name} --%>
-<%-- 	</c:forEach> --%>
+	<%-- 	<c:forEach items="categories" var="category"> --%>
+	<%-- 		${category.name} --%>
+	<%-- 	</c:forEach> --%>
 
 	<div class="wrapper">
 		<!-- Navigation -->
@@ -55,6 +55,11 @@
 			<!-- Load when user clicks Contact -->
 			<c:if test="${userClickContact == true }">
 				<%@ include file="./contact.jsp"%>
+			</c:if>
+
+			<!-- Load when user clicks All PRoducts or Categories -->
+			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true  }">
+				<%@ include file="./listProducts.jsp"%>
 			</c:if>
 		</div>
 

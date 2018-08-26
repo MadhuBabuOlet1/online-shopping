@@ -21,9 +21,9 @@ public class CategoryDAOImpl implements CategoryDAO {
 		category.setName("Television");
 		category.setDescription("This is Bravia TV ");
 		category.setImageURL("cat1.png");
-		
+
 		categories.add(category);
-		
+
 		category = new Category();
 		category.setId(2);
 		category.setName("Mobile");
@@ -31,7 +31,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		category.setImageURL("cat2.png");
 
 		categories.add(category);
-		
+
 		category = new Category();
 		category.setId(3);
 		category.setName("Laptop");
@@ -45,6 +45,18 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<Category> listOfCategories() {
 
 		return categories;
+	}
+
+	@Override
+	public Category getCategoryById(int id) {
+
+		for (Category category : categories) {
+
+			if (category.getId() == id) {
+				return category;
+			}
+		}
+		return null;
 	}
 
 }

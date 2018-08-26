@@ -7,4 +7,6 @@ import com.onlineshopping.dto.Category;
 public interface CategoryDAO {
 
 	public List<Category> listOfCategories();
+	
+	public Category getCategoryById(int id);
 }
